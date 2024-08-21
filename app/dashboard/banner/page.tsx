@@ -7,7 +7,9 @@ import { Item } from "@radix-ui/react-select";
 import { MoreHorizontal, PlusCircle, User2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {unstable_noStore as noStore} from "next/cache"
 async function getData(){
+    noStore();
     const data = await prisma.banner.findMany({
         orderBy: {
             createdAt: 'desc',

@@ -1,8 +1,9 @@
 import prisma from "@/app/lib/db";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-
+import {unstable_noStore as noStore} from "next/cache"
 async function getData(){
+    noStore();
     const data = await prisma.order.findMany({
         select: {
             amount: true,
